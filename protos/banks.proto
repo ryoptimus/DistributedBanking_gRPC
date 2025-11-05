@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package banks;
+
+service Bank {
+    rpc MsgDelivery (MsgReq) returns (MsgReply) {}
+    rpc Shutdown (ShutdownReq) returns (ShutdownReply) {}
+}
+
+message MsgReq {
+    string type = 1;
+    int32 id = 2;
+    string interface = 3;
+    double money = 4;
+}
+
+message MsgReply {
+    int32 id = 1;
+    double balance = 2;
+    string result = 3;
+}
+
+message ShutdownReq {
+    string msg = 1;
+}
+
+message ShutdownReply {
+    string status = 1;
+}
